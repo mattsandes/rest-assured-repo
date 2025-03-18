@@ -24,4 +24,11 @@ jobs:
           java-version: '21'
           cache: 'gradle'
 
-      - name: Conceder permissão de exe
+      - name: Conceder permissão de execução ao Gradle Wrapper
+        run: chmod +x gradlew
+
+      - name: Baixar dependências e compilar o projeto
+        run: ./gradlew build -x test
+
+      - name: Rodar testes do RestAssured
+        run: ./gradlew test
