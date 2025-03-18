@@ -1,4 +1,4 @@
-name: API Tests with RestAssured
+name: API Tests with RestAssured (Gradle)
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
   pull_request:
     branches:
       - main
-  workflow_dispatch: # Permite rodar a pipeline manualmente
+  workflow_dispatch: # Permite rodar manualmente pelo GitHub Actions
 
 jobs:
   api-tests:
@@ -22,10 +22,6 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '21'
-          cache: 'maven'
+          cache: 'gradle'
 
-      - name: Instalar dependências
-        run: mvn clean install -DskipTests
-
-      - name: Rodar testes do RestAssured
-        run: mvn test
+      - name: Conceder permissão de exe
